@@ -21,10 +21,7 @@ namespace Core.Network.Management
 
         private void Awake()
         {
-            _networkManager.TransportManager.Transport.SetPort(_networkWorldContext.Port);
-
 #if UNITY_SERVER
-
             StartServer();
 #endif
 #if !UNITY_SERVER
@@ -36,6 +33,7 @@ namespace Core.Network.Management
         {
             if (_networkManager == null)
                 return;
+            _networkManager.TransportManager.Transport.SetPort(_networkWorldContext.Port);
 
             _networkManager.ServerManager.StartConnection();
         }

@@ -494,8 +494,8 @@ Transform:
   m_Children:
   - {fileID: 892503116}
   - {fileID: 2014200254}
-  - {fileID: 155494031}
   - {fileID: 28891540}
+  - {fileID: 155494031}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1276910989
@@ -619,6 +619,7 @@ GameObject:
   - component: {fileID: 7443408886575219561}
   - component: {fileID: 7443408886575219562}
   - component: {fileID: 7443408886575219564}
+  - component: {fileID: 7443408886575219565}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -645,6 +646,24 @@ MonoBehaviour:
   _maximumClients: 4095
   _clientAddress: 
   _timeout: 15
+--- !u!114 &7443408886575219565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443408886575219563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211a9f6ec51ddc14f908f5acc0cd0423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerPrefab: {fileID: 6226176738498081011, guid: d7c3b210af479c94ca3e9671b0db3677, type: 3}
+  _addToDefaultScene: 1
+  Spawns:
+  - {fileID: 2014200254}
+  - {fileID: 28891540}
+  - {fileID: 155494031}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
