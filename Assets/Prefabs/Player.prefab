@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6226176738498081011}
   - component: {fileID: 548832928974325752}
   - component: {fileID: 3494171827790955484}
+  - component: {fileID: 8622120898598342055}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -127,7 +128,7 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   _networkBehaviours:
-  - {fileID: 0}
+  - {fileID: 8622120898598342055}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   SerializedTransformProperties:
@@ -186,6 +187,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8622120898598342055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571661061821275928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67ef77b1fa864d65a9c6f297d2761ae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 6226176738498081011}
+  _networkObjectCache: {fileID: 6226176738498081011}
+  _movementSystem: {fileID: 548832928974325752}
 --- !u!1 &8146097501467593449
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,11 +18,11 @@ namespace Core.Game.Units
 
         private IInputService _inputService;
 
-        [Inject]
-        private void Construct(IInputService inputService)
-        {
-            _inputService = inputService;
-        }
+        //[Inject]
+        //private void Construct(IInputService inputService)
+        //{
+        //    _inputService = inputService;
+        //}
 
         public override void OnStartClient()
         {
@@ -50,8 +50,8 @@ namespace Core.Game.Units
             if (!IsOwner)
                 return;
             
-            _movementSystem.Move(_inputService.GetMovementValue());
-            _movementSystem.Rotate(_inputService.GetRotationValue());
+           // _movementSystem.Move(_inputService.GetMovementValue());
+           // _movementSystem.Rotate(_inputService.GetRotationValue());
         }
     }
 }
