@@ -32,7 +32,7 @@ namespace Core.Network.Management
             if (_networkManager == null)
                 return;
 
-            _networkManager.ServerManager.StartConnection();
+            _networkManager.ServerManager.StartConnection(_networkWorldContext.Port);
         }
 
         private void StartClient()
