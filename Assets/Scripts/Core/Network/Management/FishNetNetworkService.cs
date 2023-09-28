@@ -33,6 +33,8 @@ namespace Core.Network.Management
             if (_networkManager == null)
                 return;
             _networkManager.TransportManager.Transport.SetPort(_networkWorldContext.Port);
+            _networkManager.TransportManager.Transport.SetServerBindAddress(_networkWorldContext.IP,IPAddressType.IPv4);
+
             _networkManager.ServerManager.StartConnection();
         }
 
