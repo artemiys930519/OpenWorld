@@ -1,7 +1,5 @@
-using System;
 using Core.Game.Systems;
 using Core.Services.InputService;
-using FishNet.Connection;
 using FishNet.Object;
 using UnityEngine;
 using Zenject;
@@ -12,37 +10,33 @@ namespace Core.Game.Units
     {
         #region Inspector
 
+        [SerializeField] private Camera _playerCamera;
         [SerializeField] private MovementSystem _movementSystem;
 
         #endregion
 
         private IInputService _inputService;
 
-        //[Inject]
-        //private void Construct(IInputService inputService)
-        //{
-        //    _inputService = inputService;
-        //}
-
-        public override void OnStartClient()
+        [Inject]
+        private void Construct(IInputService inputService)
         {
-            Debug.Log("awd");
-        }
-
-        public override void OnSpawnServer(NetworkConnection connection)
-        {
-            Debug.Log("awd"+ nameof(OnSpawnServer));
+            _inputService = inputService;
         }
 
         public override void OnStartNetwork()
         {
-            Debug.Log("awd"+ nameof(OnStartNetwork));
+            
         }
 
-        public override void OnStartServer()
+        public override void OnStartClient()
         {
-            Debug.Log("awd"+ nameof(OnStartServer));
-
+            Debug.Log("isowner");
+            _playerCamera.gameObject.SetActive(IsOwner);
+            
+            if(!IsOwner)
+                _inputService.Disable();
+            
+            _movementSystem.enabled = IsOwner;
         }
 
         private void Update()
@@ -50,8 +44,8 @@ namespace Core.Game.Units
             if (!IsOwner)
                 return;
             
-           // _movementSystem.Move(_inputService.GetMovementValue());
-           // _movementSystem.Rotate(_inputService.GetRotationValue());
+            _movementSystem.Move(_inputService.GetMovementValue());
+            _movementSystem.Rotate(_inputService.GetRotationValue());
         }
     }
 }

@@ -22,5 +22,12 @@ namespace Core.Services.InputService
         {
             return _playerInput.Player.Look.ReadValue<Vector2>();
         }
+
+        public void Disable()
+        {
+            _playerInput.Player.Move.Disable();
+            _playerInput.Player.Look.Disable();
+            _playerInput = null;
+        }
     }
 }
