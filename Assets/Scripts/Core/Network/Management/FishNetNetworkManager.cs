@@ -1,5 +1,5 @@
-﻿using System;
-using Core.Services;
+﻿using Core.Services;
+using Core.Services.InputService;
 using FishNet.Managing;
 using UnityEngine;
 using Zenject;
@@ -8,11 +8,11 @@ namespace Core.Network.Management
 {
     public class FishNetNetworkManager : MonoBehaviour
     {
-        private NetworkManager _networkManager;
+        [SerializeField] private NetworkManager _networkManager;
         private INetworkWorldContext _networkWorldContext;
-        
+
         [Inject]
-        private void Construct(INetworkWorldContext networkWorldContext )
+        private void Construct(INetworkWorldContext networkWorldContext)
         {
             _networkWorldContext = networkWorldContext;
         }

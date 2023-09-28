@@ -18,11 +18,11 @@ namespace Installers
         {
             //SignalBusInstaller.Install(Container);
             //Container.DeclareSignal<RaiseEnemySignal>();
-            
-            Container.Bind<StateMachine>().AsSingle();
+
             Container.Bind<INetworkWorldContext>().To<NetworkWorldContext>().AsSingle().WithArguments(_sceneNetworkSettings);
             Container.Bind<IInputService>().To<InputService>().AsTransient();
             Container.Bind<IFactory>().To<Factory>().AsTransient();
+            Container.Bind<StateMachine>().AsSingle();
         }
     } 
 }
