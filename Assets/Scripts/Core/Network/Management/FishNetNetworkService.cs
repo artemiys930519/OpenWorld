@@ -38,7 +38,6 @@ namespace Core.Network.Management
 
         private void StartClient()
         {
-            _networkManager = FindObjectOfType<NetworkManager>();
             if (_networkManager == null)
                 return;
             _networkManager.TransportManager.Transport.SetPort(_networkWorldContext.Port);
