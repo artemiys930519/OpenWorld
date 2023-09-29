@@ -737,7 +737,7 @@ PlayerSettings:
   webGLPowerPreference: 2
   scriptingDefineSymbols:
     Server: FISHNET;FISHNET_V3
-    Standalone: FISHNET;FISHNET_V3
+    Standalone: FISHNET;FISHNET_V3;PREDICTION_V2
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
