@@ -30,6 +30,9 @@ namespace Core.Network
 
         public override void OnStartNetwork()
         {
+            if (IsServer)
+                return;
+            
             if (_networkSceneRepository.GetPlayer().OwnerId == NetworkManager.ClientManager.Connection.ClientId)
             {
                 _cinemachineVirtualCamera.Follow = _networkSceneRepository.GetPlayer().CameraLookTarget.transform;
