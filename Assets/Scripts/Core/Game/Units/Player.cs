@@ -23,14 +23,8 @@ namespace Core.Game.Units
             _inputService = inputService;
         }
 
-        public override void OnStartNetwork()
-        {
-            
-        }
-
         public override void OnStartClient()
         {
-            Debug.Log("isowner");
             _playerCamera.gameObject.SetActive(IsOwner);
             
             if(!IsOwner)
