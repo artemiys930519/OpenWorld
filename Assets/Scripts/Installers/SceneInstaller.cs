@@ -20,7 +20,7 @@ namespace Installers
 
             Container.Bind<INetworkWorldContext>().To<NetworkWorldContext>().AsSingle().WithArguments(_sceneNetworkSettings);
             Container.Bind<IFactory>().To<Factory>().AsTransient();
-            Container.Bind<INetworkSceneRepository>().To<NetworkSceneRepository>().AsTransient();
+            Container.Bind<INetworkSceneRepository>().To<NetworkSceneRepository>().AsSingle();
             Container.Bind<StateMachine>().AsSingle();
         }
     } 

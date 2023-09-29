@@ -22,7 +22,13 @@ namespace Core.Network
              _networkSceneRepository = networkSceneRepository;
         }
 
-        public override void OnStartClient()
+        public override void OnStartServer()
+        {
+            Destroy(_camera.gameObject);
+            Destroy(_cinemachineVirtualCamera.gameObject);
+        }
+
+        public override void OnStartNetwork()
         {
             if (_networkSceneRepository.GetPlayer().OwnerId == NetworkManager.ClientManager.Connection.ClientId)
             {
