@@ -30,10 +30,19 @@ namespace Core.Network
 
         public override void OnStartNetwork()
         {
+            Debug.Log("start network");
+            
+        }
+
+        public override void OnStartClient()
+        {
+            Debug.Log("start client");
             if (IsServer)
                 return;
-            
-            _cinemachineVirtualCamera.Follow = _networkSceneRepository.GetPlayer().CameraLookTarget.transform;
+
+            var connectedPlayer = _networkSceneRepository.GetPlayer();
+            if(connectedPlayer.OwnerId == NetworkManager.ClientManager.Connection.ClientId)
+                _cinemachineVirtualCamera.Follow = _networkSceneRepository.GetPlayer().CameraLookTarget.transform;
         }
     }
 }

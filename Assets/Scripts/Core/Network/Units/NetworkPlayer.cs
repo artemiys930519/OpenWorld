@@ -29,13 +29,10 @@ namespace Core.Network.Units
 
         public override void OnStartClient()
         {
+            Debug.Log("player");
             PlayerInput.enabled = IsOwner;
 
-            if (IsOwner)
-            {
-                PlayerInput.ActivateInput();
-            }
-            else
+            if (!IsOwner)
             {
                 Destroy(StarterAssetsInputs);
                 Destroy(BasicRigidBodyPush);
