@@ -29,8 +29,11 @@ namespace Core.Network
             Destroy(_cinemachineVirtualCamera.gameObject);
         }
 
-        public override void OnStartClient()
+        public override void OnStartNetwork()
         {
+            if (IsServer)
+                return;
+            
             var connectedPlayer = _networkSceneRepository.GetPlayer();
 
             if (connectedPlayer.OwnerId == NetworkManager.ClientManager.Connection.ClientId)
