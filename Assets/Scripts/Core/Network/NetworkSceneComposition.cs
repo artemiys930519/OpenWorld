@@ -12,15 +12,14 @@ namespace Core.Network
 
         [SerializeField] private Camera _camera;
         [SerializeField] private CinemachineVirtualCamera _cinemachineVirtualCamera;
-
         #endregion
 
         private INetworkSceneRepository _networkSceneRepository;
-
+        
         [Inject]
         private void Construct(INetworkSceneRepository networkSceneRepository)
         {
-            _networkSceneRepository = networkSceneRepository;
+             _networkSceneRepository = networkSceneRepository;
         }
 
         public override void OnStartServer()
@@ -28,18 +27,18 @@ namespace Core.Network
             Destroy(_camera.gameObject);
             Destroy(_cinemachineVirtualCamera.gameObject);
         }
-        
-        public override void OnStartClient()
+
+        public override void OnStartNetwork()
         {
-            Debug.Log("start client");
             if (IsServer)
                 return;
-            
-            var connectedPlayer = _networkSceneRepository.GetPlayer();
-
+            var connectedPlayer=_networkSceneRepository.GetPlayer();
             if (connectedPlayer.OwnerId == NetworkManager.ClientManager.Connection.ClientId)
             {
                 _cinemachineVirtualCamera.Follow = _networkSceneRepository.GetPlayer().CameraLookTarget.transform;
+            }
+            else
+            {
             }
         }
     }
