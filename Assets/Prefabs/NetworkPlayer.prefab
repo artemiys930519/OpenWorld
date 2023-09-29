@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5143994367564249741}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -1551,6 +1551,11 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 7169752645710816486}
   _networkObjectCache: {fileID: 7169752645710816486}
   <CameraLookTarget>k__BackingField: {fileID: 6371386106608932556}
+  <PlayerInput>k__BackingField: {fileID: 4259048363147607150}
+  <ThirdPersonController>k__BackingField: {fileID: 5353621130710190820}
+  <StarterAssetsInputs>k__BackingField: {fileID: 4914628796307517457}
+  <BasicRigidBodyPush>k__BackingField: {fileID: 3814317049865998177}
+  <CharacterController>k__BackingField: {fileID: 1838168853332638861}
 --- !u!114 &2348491989557155284
 MonoBehaviour:
   m_ObjectHideFlags: 0
