@@ -29,16 +29,14 @@ namespace Core.Network.Units
 
         public override void OnStartClient()
         {
+            PlayerInput.enabled = IsOwner;
+
             if (IsOwner)
             {
-                PlayerInput.enabled = true;
                 PlayerInput.ActivateInput();
             }
             else
             {
-                Destroy(ThirdPersonController);
-                Destroy(CharacterController);
-                Destroy(PlayerInput);
                 Destroy(StarterAssetsInputs);
                 Destroy(BasicRigidBodyPush);
             }
