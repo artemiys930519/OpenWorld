@@ -28,9 +28,10 @@ namespace Core.Network
             Destroy(_camera.gameObject);
             Destroy(_cinemachineVirtualCamera.gameObject);
         }
-
-        public override void OnStartNetwork()
+        
+        public override void OnStartClient()
         {
+            Debug.Log("start client");
             if (IsServer)
                 return;
             
