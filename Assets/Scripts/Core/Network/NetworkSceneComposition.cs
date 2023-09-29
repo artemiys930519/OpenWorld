@@ -32,14 +32,8 @@ namespace Core.Network
         {
             if (IsServer)
                 return;
-            var connectedPlayer=_networkSceneRepository.GetPlayer();
-            if (connectedPlayer.OwnerId == NetworkManager.ClientManager.Connection.ClientId)
-            {
-                _cinemachineVirtualCamera.Follow = _networkSceneRepository.GetPlayer().CameraLookTarget.transform;
-            }
-            else
-            {
-            }
+            
+            _cinemachineVirtualCamera.Follow = _networkSceneRepository.GetPlayer().CameraLookTarget.transform;
         }
     }
 }
