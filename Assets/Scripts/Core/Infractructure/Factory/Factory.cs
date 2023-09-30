@@ -1,5 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
-using Infrastructure.AssetManagement;
+﻿using Core.Infractructure.AssetManagement;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Core.Infractructure.Factory

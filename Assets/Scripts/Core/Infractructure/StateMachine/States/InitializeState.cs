@@ -1,6 +1,6 @@
+using Core.Data;
 using Core.Infractructure.Factory;
-using Infrastructure.SceneLoader;
-using StarterAssets;
+using Core.Infractructure.SceneLoader;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,22 +18,24 @@ namespace Core.Infractructure.StateMachine.States
 
             _factory = factory;
         }
-        public void Exit()
-        {
-        }
 
         public async void Enter(Transform payload)
         {
-            await _sceneLoader.LoadSceneAsync("EnviromentScene", LoadSceneMode.Additive);
-            
+            await _sceneLoader.LoadSceneAsync(SceneData.EnviromentSceneName, LoadSceneMode.Additive);
+
             GameObject tempPlayerPrefab = await _factory.CreatePlayer(payload.position, payload.rotation.eulerAngles);
-            
+
             if (tempPlayerPrefab.TryGetComponent(out CharacterController character))
             {
                 character.enabled = false;
                 tempPlayerPrefab.transform.SetPositionAndRotation(payload.position, payload.rotation);
                 character.enabled = true;
             }
+        }
+
+        public void Exit()
+        {
+            
         }
     }
 }

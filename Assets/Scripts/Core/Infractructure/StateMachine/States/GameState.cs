@@ -1,4 +1,5 @@
-using Infrastructure.SceneLoader;
+using Core.Data;
+using Core.Infractructure.SceneLoader;
 using UnityEngine.SceneManagement;
 
 namespace Core.Infractructure.StateMachine.States
@@ -18,8 +19,8 @@ namespace Core.Infractructure.StateMachine.States
 
         public async void Enter()
         {
-            await _sceneLoader.LoadSceneAsync("NetworkInfrastructureScene");
-            await _sceneLoader.LoadSceneAsync("EnviromentScene", LoadSceneMode.Additive);
+            await _sceneLoader.LoadSceneAsync(SceneData.NetworkSceneName);
+            await _sceneLoader.LoadSceneAsync(SceneData.EnviromentSceneName, LoadSceneMode.Additive);
         }
     }
 }

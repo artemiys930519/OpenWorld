@@ -1,9 +1,10 @@
 using Core.Events;
+using Core.Infractructure.AssetManagement;
 using Core.Infractructure.Factory;
+using Core.Infractructure.SceneLoader;
 using Core.Network;
 using Core.Services.Repository;
-using Infrastructure.AssetManagement;
-using Infrastructure.SceneLoader;
+using Core.Services.SceneComposition;
 using ScriptableObjects;
 using UnityEngine;
 using Zenject;

@@ -10,7 +10,6 @@ namespace Installers
         {
             Container.BindInterfacesAndSelfTo<InitializeState>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameState>().AsSingle();
-            Container.BindInterfacesAndSelfTo<EndState>().AsSingle();
             Container.Bind<StateMachine>().AsSingle();
         }
     } 

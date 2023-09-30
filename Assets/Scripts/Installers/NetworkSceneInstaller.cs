@@ -3,6 +3,7 @@ using Core.Network;
 using Core.Network.Management;
 using Core.Services;
 using Core.Services.Repository;
+using Core.Services.SceneComposition;
 using ScriptableObjects;
 using UnityEngine;
 using Zenject;
@@ -15,15 +16,15 @@ namespace Installers
         [SerializeField] private SceneNetworkSettings _sceneNetworkSettings;
         [SerializeField] private FishNetNetworkService _fishNetNetworkService;
         [SerializeField] private NetworkSceneComposition _networkSceneComposition;
+
         public override void InstallBindings()
         {
-            Container.Bind<INetworkWorldContext>().To<NetworkWorldContext>().AsSingle().WithArguments(_sceneNetworkSettings);
+            Container.Bind<INetworkWorldContext>().To<NetworkWorldContext>().AsSingle()
+                .WithArguments(_sceneNetworkSettings);
             Container.Bind<IFactory>().To<Factory>().AsTransient();
             Container.Bind<ISceneRepository>().To<SceneRepository>().AsSingle();
             Container.Bind<ISceneComposition>().FromInstance(_networkSceneComposition);
             Container.Bind<INetworkService>().FromInstance(_fishNetNetworkService);
-
         }
-    } 
+    }
 }
-

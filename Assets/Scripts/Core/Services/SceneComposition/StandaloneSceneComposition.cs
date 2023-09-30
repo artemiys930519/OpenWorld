@@ -1,11 +1,10 @@
-using System;
 using Cinemachine;
 using Core.Game.Units;
 using Core.Services.Repository;
 using UnityEngine;
 using Zenject;
 
-namespace Core.Network
+namespace Core.Services.SceneComposition
 {
     public class StandaloneSceneComposition : MonoBehaviour,ISceneComposition
     {

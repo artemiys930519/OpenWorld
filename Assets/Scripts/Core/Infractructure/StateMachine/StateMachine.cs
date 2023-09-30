@@ -10,11 +10,10 @@ namespace Core.Infractructure.StateMachine
         private readonly Dictionary<Type, IExitableState> _states = new();
         private IExitableState _activeState;
 
-        public StateMachine(InitializeState initializeState, GameState scenarioState, EndState endState)
+        public StateMachine(InitializeState initializeState, GameState gameState)
         {
             _states[typeof(InitializeState)] = initializeState;
-            _states[typeof(GameState)] = scenarioState;
-            _states[typeof(EndState)] = endState;
+            _states[typeof(GameState)] = gameState;
         }
 
         public void Enter<TState>() where TState : class, IState

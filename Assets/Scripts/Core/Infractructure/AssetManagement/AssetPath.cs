@@ -1,7 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
-
-namespace Infrastructure.AssetManagement
+﻿namespace Core.Infractructure.AssetManagement
 {
     public class AssetPath
     {

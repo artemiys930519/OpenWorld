@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
 
-namespace Infrastructure.AssetManagement
+namespace Core.Infractructure.AssetManagement
 {
     public class ScenesInBuildListAssetsProvider : ISceneAssets, IProgress<float>
     {

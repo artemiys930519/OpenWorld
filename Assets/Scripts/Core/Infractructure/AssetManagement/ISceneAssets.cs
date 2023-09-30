@@ -1,8 +1,7 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
 
-namespace Infrastructure.AssetManagement
+namespace Core.Infractructure.AssetManagement
 {
     public interface ISceneAssets
     {

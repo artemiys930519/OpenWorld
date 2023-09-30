@@ -1,4 +1,4 @@
-namespace Core.Network
+namespace Core.Services.SceneComposition
 {
     public interface ISceneComposition
     {

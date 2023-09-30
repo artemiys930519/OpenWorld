@@ -5,9 +5,8 @@ using Core.Services.Repository;
 using FishNet.Object;
 using UnityEngine;
 using Zenject;
-using NetworkPlayer = Core.Network.Units.NetworkPlayer;
 
-namespace Core.Network
+namespace Core.Services.SceneComposition
 {
     public class NetworkSceneComposition : NetworkBehaviour, ISceneComposition
     {

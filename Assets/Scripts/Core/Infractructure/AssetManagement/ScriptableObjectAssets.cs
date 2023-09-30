@@ -3,7 +3,7 @@ using ScriptableObjects;
 using UnityEngine;
 using Zenject;
 
-namespace Infrastructure.AssetManagement
+namespace Core.Infractructure.AssetManagement
 {
     public class ScriptableObjectAssets : IAssets
     {

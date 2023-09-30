@@ -1,6 +1,5 @@
-using System;
+using Core.Events;
 using Core.Infractructure.StateMachine;
-using Core.Infractructure.StateMachine.States;
 using Core.Logic;
 using UnityEngine;
 using Zenject;
@@ -11,16 +10,16 @@ namespace Core.Game
     {
         #region Inspector
 
-        [SerializeField] private GameBootstrapper _gameBootstrapper;
         [SerializeField] private TriggerObserver _triggerObserver;
-        private StateMachine _stateMachine;
 
         #endregion
+
+        private SignalBus _signalBus;
         
         [Inject]
-        private void Construct(StateMachine stateMachine)
+        private void Construct(SignalBus signalBus)
         {
-            _stateMachine = stateMachine;
+            _signalBus = signalBus;
         }
 
         private void OnEnable()
@@ -35,7 +34,7 @@ namespace Core.Game
 
         private void OnPlayerTriggerEnter()
         {
-            _gameBootstrapper.LoadGameScene();
+            _signalBus.Fire<RaisePortalSignal>();
         }
     }
 }

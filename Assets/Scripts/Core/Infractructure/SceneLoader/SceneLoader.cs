@@ -1,8 +1,8 @@
-﻿using Cysharp.Threading.Tasks;
-using Infrastructure.AssetManagement;
+﻿using Core.Infractructure.AssetManagement;
+using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
 
-namespace Infrastructure.SceneLoader
+namespace Core.Infractructure.SceneLoader
 {
     public class SceneLoader : ISceneLoader
     {
