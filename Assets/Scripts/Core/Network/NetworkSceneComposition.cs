@@ -8,7 +8,7 @@ using NetworkPlayer = Core.Network.Units.NetworkPlayer;
 
 namespace Core.Network
 {
-    public class NetworkSceneComposition : NetworkBehaviour,ISceneComposition
+    public class NetworkSceneComposition : NetworkBehaviour, ISceneComposition
     {
         #region Inspector
 
@@ -21,15 +21,10 @@ namespace Core.Network
         private INetworkService _networkService;
 
         [Inject]
-        private void Construct(INetworkService networkService,ISceneRepository networkSceneRepository)
+        private void Construct(INetworkService networkService, ISceneRepository networkSceneRepository)
         {
             _networkService = networkService;
             _networkSceneRepository = networkSceneRepository;
-        }
-
-        private void OnEnable()
-        {
-            _networkService.StartClient();
         }
 
         public override void OnStartServer()

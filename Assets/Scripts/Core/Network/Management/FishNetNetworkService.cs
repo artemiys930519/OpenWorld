@@ -1,4 +1,5 @@
-﻿using Core.Services;
+﻿using System;
+using Core.Services;
 using FishNet.Managing;
 using UnityEngine;
 using Zenject;
@@ -30,8 +31,10 @@ namespace Core.Network.Management
             {
                 port = result;
             }
-            
             StartServer();
+#endif
+#if !UNITY_SERVER
+            StartClient();
 #endif
         }
 
