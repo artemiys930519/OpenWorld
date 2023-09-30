@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace Core.Infractructure.StateMachine.States
 {
-    public class InitializeState : IState
+    public class InitializeState : IPayloadedState<Vector3>
     {
         private IFactory _factory;
         private StateMachine _stateMachine;
@@ -17,15 +17,14 @@ namespace Core.Infractructure.StateMachine.States
 
             _factory = factory;
         }
-
         public void Exit()
         {
         }
 
-        public async void Enter()
+        public async void Enter(Vector3 payload)
         {
             await _sceneLoader.LoadSceneAsync("EnviromentScene", LoadSceneMode.Additive);
-            await _factory.CreatePlayer(Vector3.zero);
+            await _factory.CreatePlayer(payload);
         }
     }
 }

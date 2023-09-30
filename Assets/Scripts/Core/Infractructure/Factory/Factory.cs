@@ -15,8 +15,8 @@ namespace Core.Infractructure.Factory
 
         public async UniTask<GameObject> CreatePlayer(Vector3 at)
         {
-            GameObject tempPlayer = await _assets.InstantiatePlayer(at);
-
+            GameObject tempPlayer = await _assets.InstantiatePlayer();
+            tempPlayer.transform.position = at;
             return tempPlayer;
         }
     }

@@ -25,7 +25,7 @@ namespace Installers
             Container.Bind<ISceneComposition>().FromInstance(_standaloneSceneComposition);
             Container.Bind<ISceneAssets>().To<ScenesInBuildListAssetsProvider>().AsTransient();
             Container.Bind<IAssets>().To<ScriptableObjectAssets>().AsTransient().WithArguments(_prefabSettings);
-            Container.Bind<IFactory>().To<Factory>().AsTransient();
+            Container.Bind<IFactory>().To<Factory>().AsSingle();
             Container.Bind<ISceneLoader>().To<SceneLoader>().AsTransient();
         }
     } 

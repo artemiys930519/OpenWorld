@@ -5,6 +5,6 @@ namespace Infrastructure.AssetManagement
 {
     public interface IAssets
     {
-        UniTask<GameObject> InstantiatePlayer(Vector3 at);
+        UniTask<GameObject> InstantiatePlayer();
     }
 }

@@ -16,7 +16,7 @@ namespace Infrastructure.AssetManagement
             _prefabSettings = prefabSettings;
         }
 
-        public async UniTask<GameObject> InstantiatePlayer(Vector3 at)
+        public async UniTask<GameObject> InstantiatePlayer()
         {
             var untc = new UniTaskCompletionSource<GameObject>();
             

@@ -8,6 +8,11 @@ namespace Core.Game
 {
     public class GameBootstrapper : MonoBehaviour
     {
+        #region Inspector
+
+        [SerializeField] private Transform _playerSpawnPoint;
+
+        #endregion
         private StateMachine _stateMachine;
         private ISceneLoader _sceneLoader;
 
@@ -20,12 +25,12 @@ namespace Core.Game
 
         private void Start()
         {
-            _stateMachine.Enter<InitializeState>();
+            _stateMachine.Enter<InitializeState,Vector3>(_playerSpawnPoint.position);
         }
 
-        public async void LoadGameScene()
+        public void LoadGameScene()
         {
-            await _sceneLoader.LoadSceneAsync("NetworkInfrastructureScene");
+            _stateMachine.Enter<GameState>();
         }
     }
 }
