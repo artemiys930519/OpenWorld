@@ -36,7 +36,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1696065061777</updated>
-      <workItem from="1696065069747" duration="9974000" />
+      <workItem from="1696065069747" duration="10590000" />
     </task>
     <servers />
   </component>
@@ -57,10 +57,10 @@
           <line>20</line>
           <properties documentPath="D:\projects\unity\OpenWorldClient\Assets\Scripts\Core\Game\Units\Player.cs" initialLine="20" containingFunctionPresentation="method 'Construct'">
             <startOffsets>
-              <option value="637" />
+              <option value="706" />
             </startOffsets>
             <endOffsets>
-              <option value="680" />
+              <option value="749" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />

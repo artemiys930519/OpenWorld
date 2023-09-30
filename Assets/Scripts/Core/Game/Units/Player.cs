@@ -10,9 +10,9 @@ namespace Core.Game.Units
     {
         #region Inspector
         [field:SerializeField]public GameObject CameraLookTarget { get; private set; }
-        [SerializeField] private PlayerInput _playerInput;
-        [SerializeField] private StarterAssetsInputs _starterAssetsInputs;
-        [SerializeField] private BasicRigidBodyPush _basicRigidBodyPush;
+        [field:SerializeField]public PlayerInput PlayerInput{ get; private set; }
+        [field:SerializeField]public StarterAssetsInputs StarterAssetsInputs{ get; private set; }
+        [field:SerializeField]public BasicRigidBodyPush BasicRigidBodyPush{ get; private set; }
         #endregion
 
         [Inject]

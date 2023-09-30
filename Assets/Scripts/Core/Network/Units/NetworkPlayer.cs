@@ -1,4 +1,5 @@
-﻿using Core.Services.Repository;
+﻿using Core.Game.Units;
+using Core.Services.Repository;
 using FishNet.Object;
 using StarterAssets;
 using UnityEngine;
@@ -12,10 +13,8 @@ namespace Core.Network.Units
         private ISceneRepository _networkSceneRepository;
 
         #region Inspector
-        [field:SerializeField]public GameObject CameraLookTarget { get; private set; }
-        [SerializeField] private PlayerInput _playerInput;
-        [SerializeField] private StarterAssetsInputs _starterAssetsInputs;
-        [SerializeField] private BasicRigidBodyPush _basicRigidBodyPush;
+
+        [field: SerializeField] public Player Player { get; private set; }
 
         #endregion
         
@@ -27,11 +26,11 @@ namespace Core.Network.Units
         
         public override void OnStartClient()
         {
-            _playerInput.enabled = IsOwner;
+            Player.PlayerInput.enabled = IsOwner;
             if (!IsOwner)
             {
-                Destroy(_starterAssetsInputs);
-                Destroy(_basicRigidBodyPush);
+                Destroy(Player.StarterAssetsInputs);
+                Destroy(Player.BasicRigidBodyPush);
             }
             else
             {

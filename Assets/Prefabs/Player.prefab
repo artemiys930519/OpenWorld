@@ -1208,9 +1208,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CameraLookTarget>k__BackingField: {fileID: 8915045274338958447}
-  _playerInput: {fileID: 2785310385597906990}
-  _starterAssetsInputs: {fileID: 8958455423466030759}
-  _basicRigidBodyPush: {fileID: 3106872729748562832}
+  <PlayerInput>k__BackingField: {fileID: 2785310385597906990}
+  <StarterAssetsInputs>k__BackingField: {fileID: 8958455423466030759}
+  <BasicRigidBodyPush>k__BackingField: {fileID: 3106872729748562832}
 --- !u!1 &2850786824032431098
 GameObject:
   m_ObjectHideFlags: 0
