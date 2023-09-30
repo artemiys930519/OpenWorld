@@ -1,5 +1,4 @@
-﻿using Core.Game.Units;
-using Core.Services.Repository;
+﻿using Core.Services.Repository;
 using FishNet.Object;
 using StarterAssets;
 using UnityEngine;
@@ -10,27 +9,28 @@ namespace Core.Network.Units
 {
     public class NetworkPlayer: NetworkBehaviour
     {
-        private ISceneRepository _networkSceneRepository;
-
         #region Inspector
-
-        [field: SerializeField] public Player Player { get; private set; }
-
+        [field:SerializeField]public GameObject CameraLookTarget { get; private set; }
+        [field:SerializeField]public PlayerInput PlayerInput{ get; private set; }
+        [field:SerializeField]public StarterAssetsInputs StarterAssetsInputs{ get; private set; }
+        [field:SerializeField]public BasicRigidBodyPush BasicRigidBodyPush{ get; private set; }
         #endregion
         
+        private ISceneRepository _networkSceneRepository;
+
         [Inject]
         private void Construct(ISceneRepository networkSceneRepository)
         {
             _networkSceneRepository = networkSceneRepository;
         }
-        
+
         public override void OnStartClient()
         {
-            Player.PlayerInput.enabled = IsOwner;
+            PlayerInput.enabled = IsOwner;
             if (!IsOwner)
             {
-                Destroy(Player.StarterAssetsInputs);
-                Destroy(Player.BasicRigidBodyPush);
+                Destroy(StarterAssetsInputs);
+                Destroy(BasicRigidBodyPush);
             }
             else
             {

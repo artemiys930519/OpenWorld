@@ -44,7 +44,7 @@ namespace Core.Network
         private async void PlayerInit()
         {
             var connectedPlayer = await _networkSceneRepository.GetComponentOnPlayer<NetworkPlayer>();
-            _cinemachineVirtualCamera.Follow = connectedPlayer.Player.CameraLookTarget.transform;
+            _cinemachineVirtualCamera.Follow = connectedPlayer.CameraLookTarget.transform;
         }
 
         public void InitSceneSettings()
