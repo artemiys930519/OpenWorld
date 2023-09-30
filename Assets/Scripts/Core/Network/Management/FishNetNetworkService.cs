@@ -35,7 +35,6 @@ namespace Core.Network.Management
             {
                 port = result;
             }
-            port = 7780;
 
             StartServer();
 #endif
