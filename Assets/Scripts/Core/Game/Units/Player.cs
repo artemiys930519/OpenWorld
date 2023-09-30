@@ -1,12 +1,13 @@
 using Core.Services.Repository;
 using StarterAssets;
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
 namespace Core.Game.Units
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour , IUnits
     {
         #region Inspector
         [field:SerializeField]public GameObject CameraLookTarget { get; private set; }

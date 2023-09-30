@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using Core.Game.Units;
 using Core.Network.Management;
 using Core.Services.Repository;
 using FishNet.Object;
@@ -43,7 +44,7 @@ namespace Core.Network
 
         private async void PlayerInit()
         {
-            var connectedPlayer = await _networkSceneRepository.GetComponentOnPlayer<NetworkPlayer>();
+            var connectedPlayer = await _networkSceneRepository.GetComponentOnPlayer<IUnits>();
             _cinemachineVirtualCamera.Follow = connectedPlayer.CameraLookTarget.transform;
         }
 

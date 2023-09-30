@@ -1,4 +1,5 @@
-﻿using Core.Services.Repository;
+﻿using Core.Game.Units;
+using Core.Services.Repository;
 using FishNet.Object;
 using StarterAssets;
 using UnityEngine;
@@ -7,7 +8,7 @@ using Zenject;
 
 namespace Core.Network.Units
 {
-    public class NetworkPlayer: NetworkBehaviour
+    public class NetworkPlayer: NetworkBehaviour , IUnits
     {
         #region Inspector
         [field:SerializeField]public GameObject CameraLookTarget { get; private set; }
