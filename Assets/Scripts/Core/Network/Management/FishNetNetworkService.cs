@@ -1,5 +1,7 @@
-﻿using Core.Services;
+﻿using System;
+using Core.Services;
 using FishNet.Managing;
+using UnityEditor.Rendering;
 using UnityEngine;
 using Zenject;
 
@@ -7,9 +9,11 @@ namespace Core.Network.Management
 {
     public class FishNetNetworkService : MonoBehaviour
     {
+        private const string PORT = "PORT";
         [SerializeField] private NetworkManager _networkManager;
         private INetworkWorldContext _networkWorldContext;
 
+        private ushort port = 0;
         [Inject]
         private void Construct(INetworkWorldContext networkWorldContext)
         {
@@ -19,6 +23,11 @@ namespace Core.Network.Management
         private void Awake()
         {
 #if UNITY_SERVER
+            if (ushort.TryParse(Environment.GetEnvironmentVariable(PORT), out ushort result))
+            {
+                port = result;
+            }
+            
             StartServer();
 #endif
 #if !UNITY_SERVER
@@ -30,7 +39,8 @@ namespace Core.Network.Management
         {
             if (_networkManager == null)
                 return;
-            _networkManager.TransportManager.Transport.SetPort(_networkWorldContext.Port);
+            Debug.Log(port);
+            _networkManager.TransportManager.Transport.SetPort(port);
 
             _networkManager.ServerManager.StartConnection();
         }
