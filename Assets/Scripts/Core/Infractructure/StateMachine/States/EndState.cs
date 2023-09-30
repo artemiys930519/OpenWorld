@@ -1,4 +1,5 @@
 using Core.Enums;
+using UnityEngine;
 
 namespace Core.Infractructure.StateMachine.States
 {
@@ -6,11 +7,13 @@ namespace Core.Infractructure.StateMachine.States
     {
         public void Exit()
         {
+            Debug.Log("Exit EndState");
+
         }
 
         public void Enter()
         {
-            
+            Debug.Log("enter EndState");
         }
     }
 }

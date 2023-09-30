@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e18359653f2c4677a7985b259796e53a, type: 3}
-  m_Name: GameSceneSettings
+  m_Script: {fileID: 11500000, guid: fc6b85f90025482a81ae395ad6510d71, type: 3}
+  m_Name: PrefabSettings
   m_EditorClassIdentifier: 
-  IP: 51.250.8.213
-  Port: 7780
+  PlayerPrefab: {fileID: 2829469995316742831, guid: fbfbd3eccd187204ab8baa234faec2f3, type: 3}

@@ -2,8 +2,8 @@
 
 namespace Core.Enums
 {
-    public static class Enumenators
+    public enum Scenes
     {
-     
+            
     }
 }

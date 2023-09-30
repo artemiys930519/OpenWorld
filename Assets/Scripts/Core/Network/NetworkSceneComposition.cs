@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using Cinemachine;
-using Core.Network.Repository;
-using FishNet;
+﻿using Cinemachine;
+using Core.Network.Management;
+using Core.Services.Repository;
 using FishNet.Object;
-using FishNet.Transporting;
 using UnityEngine;
 using Zenject;
 using NetworkPlayer = Core.Network.Units.NetworkPlayer;
 
 namespace Core.Network
 {
-    public class NetworkSceneComposition : NetworkBehaviour
+    public class NetworkSceneComposition : NetworkBehaviour,ISceneComposition
     {
         #region Inspector
 
@@ -19,12 +17,19 @@ namespace Core.Network
 
         #endregion
 
-        private INetworkSceneRepository _networkSceneRepository;
+        private ISceneRepository _networkSceneRepository;
+        private INetworkService _networkService;
 
         [Inject]
-        private void Construct(INetworkSceneRepository networkSceneRepository)
+        private void Construct(INetworkService networkService,ISceneRepository networkSceneRepository)
         {
+            _networkService = networkService;
             _networkSceneRepository = networkSceneRepository;
+        }
+
+        private void OnEnable()
+        {
+            _networkService.StartClient();
         }
 
         public override void OnStartServer()
@@ -38,14 +43,18 @@ namespace Core.Network
             if (IsServer)
                 return;
 
-            PlayerInit();
+            InitSceneSettings();
         }
 
         private async void PlayerInit()
         {
-            var connectedPlayer = await _networkSceneRepository.GetLocalPlayer();
+            var connectedPlayer = await _networkSceneRepository.GetComponentOnPlayer<NetworkPlayer>();
             _cinemachineVirtualCamera.Follow = connectedPlayer.CameraLookTarget.transform;
         }
 
+        public void InitSceneSettings()
+        {
+            PlayerInit();
+        }
     }
 }

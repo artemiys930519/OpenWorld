@@ -1,27 +1,23 @@
-﻿using UnityEngine;
-using Zenject;
+﻿using Cysharp.Threading.Tasks;
+using Infrastructure.AssetManagement;
+using UnityEngine;
 
 namespace Core.Infractructure.Factory
 {
     public class Factory : IFactory
     {
+        private readonly IAssets _assets;
 
-        private DiContainer _diContainer;
-
-        private Factory(DiContainer diContainer)
+        private Factory(IAssets assets)
         {
-            _diContainer = diContainer;
+            _assets = assets;
         }
 
-        public GameObject CreatePlayer()
+        public async UniTask<GameObject> CreatePlayer(Vector3 at)
         {
+            GameObject tempPlayer = await _assets.InstantiatePlayer(at);
 
-            //GameObject tempPlayerPrefab = _diContainer.InstantiatePrefab();
-            //tempPlayerPrefab.transform.position = _playerPoints[0].transform.position;
-            //tempPlayerPrefab.transform.rotation = _playerPoints[0].transform.rotation;
-
-            //return tempPlayerPrefab;
-            return null;
+            return tempPlayer;
         }
     }
 }

@@ -7,11 +7,14 @@ namespace Core.Infractructure.StateMachine
 {
     public class StateMachine
     {
-        private readonly Dictionary<Type, IExitableState> _states;
+        private readonly Dictionary<Type, IExitableState> _states = new();
         private IExitableState _activeState;
 
-        public StateMachine(IFactory factory)
+        public StateMachine(InitializeState initializeState, GameState scenarioState, EndState endState)
         {
+            _states[typeof(InitializeState)] = initializeState;
+            _states[typeof(GameState)] = scenarioState;
+            _states[typeof(EndState)] = endState;
         }
 
         public void Enter<TState>() where TState : class, IState

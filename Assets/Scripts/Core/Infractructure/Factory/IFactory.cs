@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Core.Infractructure.Factory
 {
     public interface IFactory
     {
-        public GameObject CreatePlayer();
+        public UniTask<GameObject> CreatePlayer(Vector3 at);
     }
 }

@@ -1,5 +1,4 @@
-﻿using Core.Game.Units;
-using Core.Network.Repository;
+﻿using Core.Services.Repository;
 using FishNet.Object;
 using StarterAssets;
 using UnityEngine;
@@ -8,35 +7,35 @@ using Zenject;
 
 namespace Core.Network.Units
 {
-    public class NetworkPlayer: NetworkBehaviour, IUnits
+    public class NetworkPlayer: NetworkBehaviour
     {
-        private INetworkSceneRepository _networkSceneRepository;
+        private ISceneRepository _networkSceneRepository;
 
         #region Inspector
         [field:SerializeField]public GameObject CameraLookTarget { get; private set; }
-        [field:SerializeField]public PlayerInput PlayerInput{ get; private set; }
-        [field:SerializeField]public StarterAssetsInputs StarterAssetsInputs{ get; private set; }
-        [field:SerializeField]public BasicRigidBodyPush BasicRigidBodyPush{ get; private set; }
+        [SerializeField] private PlayerInput _playerInput;
+        [SerializeField] private StarterAssetsInputs _starterAssetsInputs;
+        [SerializeField] private BasicRigidBodyPush _basicRigidBodyPush;
 
         #endregion
         
         [Inject]
-        private void Construct(INetworkSceneRepository networkSceneRepository)
+        private void Construct(ISceneRepository networkSceneRepository)
         {
             _networkSceneRepository = networkSceneRepository;
         }
         
         public override void OnStartClient()
         {
-            PlayerInput.enabled = IsOwner;
+            _playerInput.enabled = IsOwner;
             if (!IsOwner)
             {
-                Destroy(StarterAssetsInputs);
-                Destroy(BasicRigidBodyPush);
+                Destroy(_starterAssetsInputs);
+                Destroy(_basicRigidBodyPush);
             }
             else
             {
-                _networkSceneRepository.RegisterPlayer(this);
+                _networkSceneRepository.RegisterPlayer(gameObject);
             }
         }
     }

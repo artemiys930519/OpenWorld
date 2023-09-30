@@ -1,23 +1,26 @@
-﻿using System;
-using Core.Services;
+﻿using Core.Services;
 using FishNet.Managing;
-using UnityEditor.Rendering;
 using UnityEngine;
 using Zenject;
 
 namespace Core.Network.Management
 {
-    public class FishNetNetworkService : MonoBehaviour
+    public class FishNetNetworkService : INetworkService
     {
         private const string PORT = "PORT";
-        [SerializeField] private NetworkManager _networkManager;
+        
         private INetworkWorldContext _networkWorldContext;
+        private NetworkManager _networkManager;
 
         private ushort port = 0;
+        
         [Inject]
-        private void Construct(INetworkWorldContext networkWorldContext)
+        private void Construct(INetworkWorldContext networkWorldContext,NetworkManager networkManager)
         {
             _networkWorldContext = networkWorldContext;
+            _networkManager = networkManager;
+            _networkManager.TransportManager.Transport.SetPort(_networkWorldContext.Port);
+            _networkManager.TransportManager.Transport.SetClientAddress(_networkWorldContext.IP);
         }
 
         private void Awake()
@@ -30,12 +33,9 @@ namespace Core.Network.Management
             
             StartServer();
 #endif
-#if !UNITY_SERVER
-            StartClient();
-#endif
         }
 
-        private void StartServer()
+        public void StartServer()
         {
             if (_networkManager == null)
                 return;
@@ -45,12 +45,11 @@ namespace Core.Network.Management
             _networkManager.ServerManager.StartConnection();
         }
 
-        private void StartClient()
+        public void StartClient()
         {
             if (_networkManager == null)
                 return;
-            _networkManager.TransportManager.Transport.SetPort(_networkWorldContext.Port);
-            _networkManager.TransportManager.Transport.SetClientAddress(_networkWorldContext.IP);
+            
             _networkManager.ClientManager.StartConnection();
         }
     }
