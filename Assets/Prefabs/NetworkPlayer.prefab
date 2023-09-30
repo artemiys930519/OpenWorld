@@ -1742,7 +1742,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 7169752645710816486}
   _networkObjectCache: {fileID: 7169752645710816486}
   IgnoredParameters: []
-  _animator: {fileID: 0}
+  _animator: {fileID: 7163235960873262379}
   _smoothFloats: 1
   _interpolation: 2
   _clientAuthoritative: 1
