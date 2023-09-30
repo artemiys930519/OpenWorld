@@ -5,6 +5,6 @@ namespace Core.Infractructure.Factory
 {
     public interface IFactory
     {
-        public UniTask<GameObject> CreatePlayer(Vector3 at);
+        public UniTask<GameObject> CreatePlayer(Vector3 payload);
     }
 }

@@ -13,11 +13,12 @@ namespace Core.Infractructure.Factory
             _assets = assets;
         }
 
-        public async UniTask<GameObject> CreatePlayer(Vector3 at)
+        public async UniTask<GameObject> CreatePlayer(Vector3 payload)
         {
-            GameObject tempPlayer = await _assets.InstantiatePlayer();
-            tempPlayer.transform.position = at;
-            return tempPlayer;
+            GameObject tempPlayerPrefab = await _assets.InstantiatePlayer();
+            tempPlayerPrefab.transform.SetPositionAndRotation(payload,Quaternion.identity);
+            
+            return tempPlayerPrefab;
         }
     }
 }

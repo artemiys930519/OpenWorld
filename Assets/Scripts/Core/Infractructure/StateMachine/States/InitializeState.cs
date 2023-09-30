@@ -1,5 +1,6 @@
 using Core.Infractructure.Factory;
 using Infrastructure.SceneLoader;
+using StarterAssets;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,7 +25,14 @@ namespace Core.Infractructure.StateMachine.States
         public async void Enter(Vector3 payload)
         {
             await _sceneLoader.LoadSceneAsync("EnviromentScene", LoadSceneMode.Additive);
-            await _factory.CreatePlayer(payload);
+            GameObject tempPlayerPrefab = await _factory.CreatePlayer(payload);
+            
+            if (tempPlayerPrefab.TryGetComponent(out CharacterController character))
+            {
+                character.enabled = false;
+                tempPlayerPrefab.transform.position = payload;
+                character.enabled = true;
+            }
         }
     }
 }
