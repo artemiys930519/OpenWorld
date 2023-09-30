@@ -25,7 +25,7 @@ namespace Core.Game
 
         private void Start()
         {
-            _stateMachine.Enter<InitializeState,Vector3>(_playerSpawnPoint.position);
+            _stateMachine.Enter<InitializeState,Transform>(_playerSpawnPoint);
         }
 
         public void LoadGameScene()
