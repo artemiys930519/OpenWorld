@@ -1,6 +1,4 @@
-﻿using System;
-using Core.Events;
-using Core.Infractructure.SceneLoader;
+﻿using Core.Events;
 using Core.Infractructure.StateMachine;
 using Core.Infractructure.StateMachine.States;
 using UnityEngine;
@@ -17,14 +15,12 @@ namespace Core.Game
         #endregion
 
         private StateMachine _stateMachine;
-        private ISceneLoader _sceneLoader;
         private SignalBus _signalBus;
 
         [Inject]
-        private void Construct(SignalBus signalBus, ISceneLoader sceneLoader, StateMachine stateMachine)
+        private void Construct(SignalBus signalBus, StateMachine stateMachine)
         {
             _signalBus = signalBus;
-            _sceneLoader = sceneLoader;
             _stateMachine = stateMachine;
         }
 

@@ -1,19 +1,16 @@
-using System;
-using System.Collections.Generic;
-using Core.Infractructure.Factory;
+using Core.Infractructure.StateMachine.Repository;
 using Core.Infractructure.StateMachine.States;
 
 namespace Core.Infractructure.StateMachine
 {
     public class StateMachine
     {
-        private readonly Dictionary<Type, IExitableState> _states = new();
-        private IExitableState _activeState;
+        private IInitialState _activeState;
+        private readonly IStateRepository _stateRepository;
 
-        public StateMachine(InitializeState initializeState, GameState gameState)
+        public StateMachine(IStateRepository stateRepository)
         {
-            _states[typeof(InitializeState)] = initializeState;
-            _states[typeof(GameState)] = gameState;
+            _stateRepository = stateRepository;
         }
 
         public void Enter<TState>() where TState : class, IState
@@ -28,7 +25,7 @@ namespace Core.Infractructure.StateMachine
             state.Enter(payLoad);
         }
 
-        private TState ChangeState<TState>() where TState : class, IExitableState
+        private TState ChangeState<TState>() where TState : class, IInitialState
         {
             _activeState?.Exit();
 
@@ -38,7 +35,9 @@ namespace Core.Infractructure.StateMachine
             return state;
         }
 
-        private TState GetState<TState>() where TState : class, IExitableState =>
-            _states[typeof(TState)] as TState;
+        private TState GetState<TState>() where TState : class, IInitialState
+        {
+            return _stateRepository.GetState<TState>();
+        }
     }
 }

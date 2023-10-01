@@ -1,6 +1,6 @@
 namespace Core.Infractructure.StateMachine.States
 {
-    public interface IState : IExitableState
+    public interface IState : IInitialState
     {
         void Enter();
     }

@@ -1,5 +1,7 @@
 ﻿using Core.Infractructure.Factory;
-using Core.Network;
+using Core.Infractructure.StateMachine;
+using Core.Infractructure.StateMachine.Repository;
+using Core.Infractructure.StateMachine.States;
 using Core.Network.Management;
 using Core.Services;
 using Core.Services.Repository;
@@ -25,6 +27,14 @@ namespace Installers
             Container.Bind<ISceneRepository>().To<SceneRepository>().AsSingle();
             Container.Bind<ISceneComposition>().FromInstance(_networkSceneComposition);
             Container.Bind<INetworkService>().FromInstance(_fishNetNetworkService);
+            InitStateMachiine();
+        }
+
+        private void InitStateMachiine()
+        {
+            Container.Bind<IStateRepository>().To<StateRepository>().AsSingle();
+            Container.Bind<IInitialState>().To<NetworkState>().AsSingle().NonLazy();
+            Container.Bind<StateMachine>().AsSingle();
         }
     }
 }

@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Core.Network.Management
 {
-    public class FishNetNetworkService :MonoBehaviour, INetworkService
+    public class FishNetNetworkService : MonoBehaviour, INetworkService
     {
         private const string PORT = "PORT";
 
@@ -14,12 +14,12 @@ namespace Core.Network.Management
 
         [SerializeField] private NetworkManager _networkManager;
 
-        #endregion   
-        
+        #endregion
+
         private INetworkWorldContext _networkWorldContext;
 
         private ushort port = 0;
-        
+
         [Inject]
         private void Construct(INetworkWorldContext networkWorldContext)
         {
@@ -28,26 +28,15 @@ namespace Core.Network.Management
             _networkManager.TransportManager.Transport.SetClientAddress(_networkWorldContext.IP);
         }
 
-        private void Awake()
+        public void StartServer()
         {
-#if UNITY_SERVER
+            if (_networkManager == null)
+                return;
             if (ushort.TryParse(Environment.GetEnvironmentVariable(PORT), out ushort result))
             {
                 port = result;
             }
 
-            StartServer();
-#endif
-#if !UNITY_SERVER
-            StartClient();
-#endif
-        }
-
-        public void StartServer()
-        {
-            if (_networkManager == null)
-                return;
-            Debug.Log(port);
             _networkManager.TransportManager.Transport.SetPort(port);
 
             _networkManager.ServerManager.StartConnection();
@@ -57,7 +46,7 @@ namespace Core.Network.Management
         {
             if (_networkManager == null)
                 return;
-            
+
             _networkManager.ClientManager.StartConnection();
         }
     }

@@ -1,7 +1,8 @@
 namespace Core.Infractructure.StateMachine.States
 {
-    public interface IExitableState
+    public interface IInitialState
     {
+        void Init();
         void Exit();
     }
 }

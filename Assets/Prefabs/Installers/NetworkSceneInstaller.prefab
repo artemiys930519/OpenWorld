@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5328016569859925384}
   - component: {fileID: 5119287351272143163}
   - component: {fileID: 5030816319221070046}
-  - component: {fileID: 8290052071675695429}
   m_Layer: 0
   m_Name: NetworkSceneInstaller
   m_TagString: Untagged
@@ -49,7 +48,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 5030816319221070046}
-  - {fileID: 8290052071675695429}
+  - {fileID: 0}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -80,15 +79,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneNetworkSettings: {fileID: 11400000, guid: f8d63cdad562e21439f8fc85ae682f2b, type: 2}
---- !u!114 &8290052071675695429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950866511158035360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f4868bd2a34a1fbe6c88569cb37694, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _fishNetNetworkService: {fileID: 0}
+  _networkSceneComposition: {fileID: 0}

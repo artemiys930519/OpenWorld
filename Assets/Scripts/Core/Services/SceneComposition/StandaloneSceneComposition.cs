@@ -10,7 +10,6 @@ namespace Core.Services.SceneComposition
     {
         #region Inspector
 
-        [SerializeField] private Camera _camera;
         [SerializeField] private CinemachineVirtualCamera _cinemachineVirtualCamera;
         private ISceneRepository _sceneRepository;
 
@@ -21,12 +20,7 @@ namespace Core.Services.SceneComposition
         {
             _sceneRepository = sceneRepository;
         }
-
-        private void Start()
-        {
-            InitSceneSettings();
-        }
-
+        
         public async void InitSceneSettings()
         {
             var connectedPlayer = await _sceneRepository.GetComponentOnPlayer<Player>();

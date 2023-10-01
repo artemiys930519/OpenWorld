@@ -261,6 +261,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <IsNested>k__BackingField: 0
+  _enablePrediction: 0
+  _predictionType: 0
+  _graphicalObject: {fileID: 0}
+  _enableStateForwarding: 1
+  _ownerInterpolation: 1
+  _enableTeleport: 0
+  _ownerTeleportThreshold: 1
+  _spectatorAdaptiveInterpolation: 1
+  _spectatorInterpolation: 1
+  _adaptiveSmoothingType: 0
+  _customSmoothingData:
+    NormalPercent: 1.25
+    CollisionPercent: 0.125
+    CollisionStep: 0.75
+    NormalStep: 0.25
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   _networkBehaviours:
@@ -276,6 +291,11 @@ MonoBehaviour:
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
+  _preconfiguredSmoothingDataPreview:
+    NormalPercent: 0.625
+    CollisionPercent: 0.0625
+    CollisionStep: 1
+    NormalStep: 0.25
   <PrefabId>k__BackingField: 0
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 814669237
@@ -337,6 +357,10 @@ PrefabInstance:
       propertyPath: _networkSceneComposition
       value: 
       objectReference: {fileID: 571691927}
+    - target: {fileID: 5119287351272143163, guid: 89f207040f17f6c42b307aa559141fdc, type: 3}
+      propertyPath: _monoInstallers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5328016569859925384, guid: 89f207040f17f6c42b307aa559141fdc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5154083
@@ -443,6 +467,50 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1787086500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1351979808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1351979810}
+  - component: {fileID: 1351979809}
+  m_Layer: 0
+  m_Name: EntryPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1351979809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351979808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd382abb8e684883b8da7f0db9721d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1351979810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351979808}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.389999, y: 1.23, z: 17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1787086499
 GameObject:
@@ -835,3 +903,4 @@ SceneRoots:
   - {fileID: 1787086500}
   - {fileID: 7443408886575219561}
   - {fileID: 183504110}
+  - {fileID: 1351979810}

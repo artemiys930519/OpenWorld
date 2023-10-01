@@ -1,6 +1,5 @@
 ﻿using Cinemachine;
 using Core.Game.Units;
-using Core.Network.Management;
 using Core.Services.Repository;
 using FishNet.Object;
 using UnityEngine;
@@ -18,12 +17,10 @@ namespace Core.Services.SceneComposition
         #endregion
 
         private ISceneRepository _networkSceneRepository;
-        private INetworkService _networkService;
 
         [Inject]
-        private void Construct(INetworkService networkService, ISceneRepository networkSceneRepository)
+        private void Construct(ISceneRepository networkSceneRepository)
         {
-            _networkService = networkService;
             _networkSceneRepository = networkSceneRepository;
         }
 
@@ -31,14 +28,6 @@ namespace Core.Services.SceneComposition
         {
             Destroy(_camera.gameObject);
             Destroy(_cinemachineVirtualCamera.gameObject);
-        }
-
-        public override void OnStartClient()
-        {
-            if (IsServer)
-                return;
-
-            InitSceneSettings();
         }
 
         private async void PlayerInit()
