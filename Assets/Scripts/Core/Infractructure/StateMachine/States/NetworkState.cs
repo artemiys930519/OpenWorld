@@ -1,7 +1,5 @@
 using Core.Infractructure.StateMachine.Repository;
 using Core.Network.Management;
-using Core.Network.Units;
-using Core.Services.Repository;
 using Core.Services.SceneComposition;
 
 namespace Core.Infractructure.StateMachine.States
