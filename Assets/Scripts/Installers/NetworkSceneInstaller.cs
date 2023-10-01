@@ -1,4 +1,6 @@
-﻿using Core.Infractructure.Factory;
+﻿using Core.Infractructure.AssetManagement;
+using Core.Infractructure.Factory;
+using Core.Infractructure.SceneLoader;
 using Core.Infractructure.StateMachine;
 using Core.Infractructure.StateMachine.Repository;
 using Core.Infractructure.StateMachine.States;
@@ -25,6 +27,10 @@ namespace Installers
                 .WithArguments(_sceneNetworkSettings);
             Container.Bind<IFactory>().To<Factory>().AsTransient();
             Container.Bind<ISceneRepository>().To<SceneRepository>().AsSingle();
+            //scene loader installer
+            Container.Bind<ISceneAssets>().To<ScenesInBuildListAssetsProvider>().AsTransient();
+            Container.Bind<ISceneLoader>().To<SceneLoader>().AsTransient();
+            //
             Container.Bind<ISceneComposition>().FromInstance(_networkSceneComposition);
             Container.Bind<INetworkService>().FromInstance(_fishNetNetworkService);
             InitStateMachiine();

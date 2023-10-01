@@ -1,6 +1,9 @@
+using Core.Data;
+using Core.Infractructure.SceneLoader;
 using Core.Infractructure.StateMachine.Repository;
 using Core.Network.Management;
 using Core.Services.SceneComposition;
+using UnityEngine.SceneManagement;
 
 namespace Core.Infractructure.StateMachine.States
 {
@@ -9,9 +12,12 @@ namespace Core.Infractructure.StateMachine.States
         private readonly INetworkService _networkService;
         private readonly IStateRepository _stateRepository;
         private readonly ISceneComposition _sceneComposition;
+        private readonly ISceneLoader _sceneLoader;
 
-        public NetworkState(INetworkService networkService, IStateRepository stateRepository, ISceneComposition sceneComposition)
+        public NetworkState(INetworkService networkService, IStateRepository stateRepository,
+            ISceneComposition sceneComposition, ISceneLoader sceneLoader)
         {
+            _sceneLoader = sceneLoader;
             _sceneComposition = sceneComposition;
             _stateRepository = stateRepository;
             _networkService = networkService;
@@ -23,12 +29,14 @@ namespace Core.Infractructure.StateMachine.States
             _stateRepository.AddState(this);
         }
 
-        public void Enter()
+        public async void Enter()
         {
 #if UNITY_SERVER
             _networkService.StartServer();
 #endif
 #if !UNITY_SERVER
+            await _sceneLoader.LoadSceneAsync(SceneData.EnviromentSceneName, LoadSceneMode.Additive);
+
             _networkService.StartClient();
             _sceneComposition.InitSceneSettings();
 #endif
@@ -36,7 +44,6 @@ namespace Core.Infractructure.StateMachine.States
 
         public void Exit()
         {
-            
         }
     }
 }

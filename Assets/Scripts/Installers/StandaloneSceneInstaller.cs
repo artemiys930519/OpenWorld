@@ -26,10 +26,12 @@ namespace Installers
 
             Container.Bind<ISceneRepository>().To<SceneRepository>().AsSingle();
             Container.Bind<ISceneComposition>().FromInstance(_standaloneSceneComposition);
-            Container.Bind<ISceneAssets>().To<ScenesInBuildListAssetsProvider>().AsTransient();
             Container.Bind<IAssets>().To<ScriptableObjectAssets>().AsTransient().WithArguments(_prefabSettings);
             Container.Bind<IFactory>().To<Factory>().AsSingle();
+            //scene loader installer
+            Container.Bind<ISceneAssets>().To<ScenesInBuildListAssetsProvider>().AsTransient();
             Container.Bind<ISceneLoader>().To<SceneLoader>().AsTransient();
+            //
             InitStateMachiine();
         }
 
